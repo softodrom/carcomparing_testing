@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="table-responsive">
+  <table class="table fa-check text-successtable-border border-light ml-1">
+    <thead class="border-light">
+      {% if result.car1points > result.car2points%}
+        <h2 class="mid"> {{car1.brand}} {{car1.model}} is the winner!</h2>
+      {% elif result.car1points < result.car2points %}
+        <h2 class="mid"> {{car2.brand}} {{car2.model}} is the winner!</h2>
+      {% endif %}
+     
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"><h3>{{result.car1points}}/12 </th>
+        <th scope="col"><h3>{{result.car2points}}/12 </th>
+      </tr>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"><img src={{car1.image}} alt={{car1.model}}></th>
+            <th scope="col"><img src={{car2.image}} alt={{car2.model}}></th>
+          </tr>
+        <tr>
+        <th scope="col"></th>
+        <th scope="col"><strong>{{car1.brand}} {{car1.model}}</strong></th>
+        <th scope="col"><strong>{{car2.brand}} {{car2.model}}</strong></th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Price</th>
+        <td>€ {{car1.price}}</i></td>
+        <td>€ {{car2.price}} </td>
+      </tr>
+        <tr>
+            <td class="lead">Vehicle</td>
+        </tr>
+      <tr>
+        <th scope="row">Classification</th>
+        <td>{{car1.body}}</i></td>
+        <td>{{car2.body}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Drivetrain</th>
+        <td>{{car1.drive_type}}</i></td>
+        <td>{{car2.drive_type}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Transmission</th>
+        <td>{{car1.transmission}}</i></td>
+        <td>{{car2.transmission}}</td>
+      </tr>
+      <tr>
+          <td class="lead">Engine</td>
+      </tr>
+      <tr>
+        <th scope="row">Power</th>
+        <td>{{car1.power}} Hp</td>
+        <td>{{car2.power}} Hp</td>
+      </tr>
+      <tr>
+        <th scope="row">Tourque</th>
+        <td>{{car1.tourque}}</td>
+        <td>{{car2.tourque}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Engine Type</th>
+        <td>{{car1.engine}}</td>
+        <td>{{car2.engine}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Fuel Type</th>
+        <td>{{car1.fuel}}</td>
+        <td>{{car2.fuel}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Number of cylinders</th>
+        <td>{{car1.cylinders}}</td>
+        <td>{{car2.cylinders}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Valves per cylinder</th>
+        <td>{{car1.valves}}</td>
+        <td>{{car2.valves}}</td>
+      </tr>
+        <td class="lead">Other</td>
+      </tr>
+      <tr>
+        <th scope="row">Top speed</th>
+        <td>{{car1.top_speed}} Km/h</td>
+        <td>{{car2.top_speed}} Km/h</td>
+      </tr>
+      <tr>
+        <th scope="row">Acceleration </th>
+        <td>{{car1.acceleration}} seconds</td>
+        <td>{{car2.acceleration}} seconds</td>
+      </tr>
+      <tr>
+        <th scope="row">Wheel size</th>
+        <td>{{car1.wheels}} "</td>
+        <td>{{car2.wheels}} "</td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td class="desc">{{car1.description}}</td>
+        <td class="desc">{{car2.description}}</td>
+      </tr>
+
+     
+    </tbody>
+  </table>
+</div>
+<style>
+    img {
+        height: 200px;
+        width: auto;
+    }
+
+    .mid {
+        text-align: center;
+    }
+
+    .desc {
+        border: 1px solid black;
+        height: 200px;
+    }
+</style>
+{% endblock %}

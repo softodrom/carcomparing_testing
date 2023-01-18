@@ -1,0 +1,59 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container">
+<table align="center">
+  <tr>
+    <td>
+    <div class="card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>{% block title %} 
+            {{ car.car_brand }} {{car.car_model}} 
+            {% endblock title %}</h1>
+        <p class=" card-text">{{ car.car_description}} </p>
+        <p class="card-text "><i name="price">€ {{car.price}}</i></p>
+        <p class="card-text "><i name="rating">Average Rating: <b style="color: darkgoldenrod;">{{average_rating}}/10</b></i></p>
+      </div>
+    </div>
+    </td>
+    <td rowspan="2">
+      <div class=" card mb-4  mt-3 ">
+      <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button id="submit_btn" type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </td> </tr>
+  <tr><td>
+      <div class="card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2>{{ comments.count }} comments</h2>
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+            <i style="color: darkgoldenrod;">{{comment.rating}}/10</i>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    </td></tr>
+    </table>
+    </div>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="main">Pick your cars and see which suits you better.</h1>
+<br>
+<div class="custom-center">
+  <div class="container">
+    <div class="row">
+    {%for car in cars%}
+      <div class="col-md-4">
+        <div class="card">
+            <img src={{car.main_img}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{car.car_brand}} {{car.car_model}}</h5>
+              <h5 class="card-title">€ {{car.price}}</h5>
+              <p class="card-text">{{car.car_description}}</p>
+              <a href="/car/{{car.car_model}}" class="btn btn-primary">More info</a>
+              <a href="#" class="btn btn-primary">Compare</a>
+            </div>
+        </div>
+      </div>
+    {%endfor%}
+    </div>
+</div>
+</div>
+
+
+
+<style>
+ .main {
+     text-align: center;
+     color: black;
+     font-size: 50px;
+     margin-top: 40px;
+ }
+
+ .custom-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+ }
+</style>
+
+
+{% endblock %}
